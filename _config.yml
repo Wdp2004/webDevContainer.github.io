@@ -22,3 +22,20 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-picture-tag-ng
+  - jekyll-katex
+
+# 数学公式配置
+katex:
+  css: true
+  js: true
+
+# 图片配置
+picture:
+  presets:
+    default:
+      formats: [webp, original]
+      widths: [400, 800, 1200]
+      link_source: original
+      quality: 80
+      strip: true

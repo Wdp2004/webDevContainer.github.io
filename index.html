@@ -11,6 +11,47 @@
     <title>Home</title>
   </head>
   <body>
-    <h1>{{"Hello World!" | downcase}}</h1>
+    <div class="home">
+      <div class="hero-section glass-effect">
+        <h1 class="page-heading">欢迎来到我的博客</h1>
+        <p class="subtitle">分享技术，记录生活</p>
+      </div>
+
+      <div class="post-grid">
+        {%- if site.posts.size > 0 -%}
+          {%- for post in site.posts -%}
+            <article class="post-card glass-effect">
+              {%- if post.cover -%}
+                <div class="post-cover">
+                  <img src="{{ post.cover | relative_url }}" alt="{{ post.title }}">
+                </div>
+              {%- endif -%}
+              <div class="post-content">
+                <h2 class="post-title">
+                  <a href="{{ post.url | relative_url }}">
+                    {{ post.title | escape }}
+                  </a>
+                </h2>
+                <div class="post-meta">
+                  <time datetime="{{ post.date | date_to_xmlschema }}">
+                    {{ post.date | date: "%Y-%m-%d" }}
+                  </time>
+                  {%- if post.categories.size > 0 -%}
+                    <span class="post-categories">
+                      {%- for category in post.categories -%}
+                        <span class="category-tag">{{ category }}</span>
+                      {%- endfor -%}
+                    </span>
+                  {%- endif -%}
+                </div>
+                <p class="post-excerpt">
+                  {{ post.excerpt | strip_html | truncatewords: 30 }}
+                </p>
+              </div>
+            </article>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
   </body>
 </html>

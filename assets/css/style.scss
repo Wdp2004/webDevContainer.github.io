@@ -1,0 +1,188 @@
+@import "minima";
+
+// 莫兰迪色系变量
+:root {
+  --morandi-pink: #e8d3d1;
+  --morandi-blue: #a5b1c2;
+  --morandi-green: #c5d5cb;
+  --morandi-yellow: #e6d5ac;
+  --morandi-gray: #d4d4d4;
+}
+
+// 毛玻璃效果
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+// 动画效果
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+// 主页样式
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 3rem;
+  border-radius: 15px;
+  
+  .page-heading {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+  }
+}
+
+// 文章网格布局
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+// 文章卡片样式
+.post-card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  .post-cover {
+    height: 200px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+  }
+  
+  .post-content {
+    padding: 1.5rem;
+    
+    .post-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      
+      a {
+        color: #333;
+        text-decoration: none;
+        
+        &:hover {
+          color: var(--morandi-pink);
+        }
+      }
+    }
+    
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      
+      .category-tag {
+        background: var(--morandi-blue);
+        color: white;
+        padding: 0.2rem 0.6rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+      }
+    }
+    
+    .post-excerpt {
+      color: #666;
+      line-height: 1.6;
+    }
+  }
+}
+
+// 响应式设计
+@media screen and (max-width: 768px) {
+  .post-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-section {
+    padding: 2rem 1rem;
+    
+    .page-heading {
+      font-size: 2rem;
+    }
+  }
+}
+
+// 修改默认样式
+body {
+  background-color: var(--morandi-gray);
+  color: #333;
+}
+
+.site-header {
+  background-color: var(--morandi-blue);
+  @extend .glass-effect;
+}
+
+.post-list {
+  .post-link {
+    color: #333;
+    &:hover {
+      color: var(--morandi-pink);
+    }
+  }
+}
+
+.post-content {
+  @extend .glass-effect;
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 10px;
+}
+
+// 数学公式样式
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1em 0;
+}
+
+// 图片样式
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+} 
